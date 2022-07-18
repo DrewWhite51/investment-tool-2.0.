@@ -14,6 +14,11 @@ driver.get("https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch")
 
 soup = BeautifulSoup(driver.page_source,'lxml')
 
-print(soup.find_all('div'))
+current_price = soup.find_all("div", {"id":"mrt-node-Lead-5-QuoteHeader"})
+data = soup.find("div", {"class":"My(6px) Pos(r) smartphone_Mt(6px) W(100%) "})
+# stats = soup.find_all('div', {'data-field': 'regularMarketPrice'})
+print(soup.prettify())
+
+
 
 driver.quit()
