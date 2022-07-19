@@ -28,8 +28,6 @@ class StockScraper:
 
         quote_data = soup.findAll("tr")
 
-        # print((soup.prettify()))
-
         price_movement = (re.findall(r'"\d+\.\d+"', current_str))
         price_mov = {
             'current_price': (price_movement[0]),
