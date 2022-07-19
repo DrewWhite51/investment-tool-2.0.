@@ -1,11 +1,13 @@
 import pandas_datareader as pdr
 import yfinance as yf
+from web_scraper import StockScraper
 
 
-
-
-msft = yf.Ticker("MSFT")
-
-# get stock info
-print(msft.history(period="max"))
-
+# print(StockScraper('nvda').scrape_yfinance())
+#
+# print(StockScraper('sq').scrape_yfinance())
+print(StockScraper('IBM').scrape_yfinance())
+# print(StockScraper('V').scrape_yfinance())
+# print(StockScraper('F').scrape_yfinance())
+# print()
+# print()
