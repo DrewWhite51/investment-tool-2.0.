@@ -14,7 +14,7 @@ def print_connection():
 def select_query():
     try:
         cursor = connection.cursor()
-        postgreSQL_select_Query = 'select * from "endurance-trainer".workouts;'
+        postgreSQL_select_Query = ''
         cursor.execute(postgreSQL_select_Query)
         mobile_records = cursor.fetchall()
     except (Exception, psycopg2.Error) as error:

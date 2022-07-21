@@ -23,12 +23,16 @@ class StockScraper:
 
         soup = BeautifulSoup(driver.page_source, 'lxml')
 
-        current_price_data = soup.find("div", {"id": "mrt-node-Lead-5-QuoteHeader"})
+        # current_price_data = soup.find("div", {"id": "mrt-node-Lead-5-QuoteHeader"})
+        current_price_data = soup.find("div", {"class": "D(ib) Va(m) Maw(65%) Ov(h)"})
         current_str = str(current_price_data)
 
         quote_data = soup.findAll("tr")
 
         price_movement = (re.findall(r'"\d+\.\d+"', current_str))
+
+        print(current_price_data.text)
+
         price_mov = {
             'current_price': (price_movement[0]),
             'dollar_move': (price_movement[1]),
