@@ -3,13 +3,13 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import re
 
+
 class StockScraper:
 
     def __init__(self, ticker):
         self.ticker = ticker
 
     def scrape_yfinance(self):
-
         CHROMEDRIVER_PATH = "C:/Users/drew_/OneDrive/Desktop/chromedriver_win32/chromedriver.exe"
 
         scrape_url = f'https://finance.yahoo.com/quote/{self.ticker.upper()}?p={self.ticker.upper()}&.tsrc=fin-srch'
@@ -23,16 +23,12 @@ class StockScraper:
 
         soup = BeautifulSoup(driver.page_source, 'lxml')
 
-        # current_price_data = soup.find("div", {"id": "mrt-node-Lead-5-QuoteHeader"})
-        current_price_data = soup.find("div", {"class": "D(ib) Va(m) Maw(65%) Ov(h)"})
-        current_str = str(current_price_data)
+        streamers = soup.findAll('fin-streamer')
 
         quote_data = soup.findAll("tr")
 
-        price_movement = (re.findall(r'"\d+\.\d+"', current_str))
-
-        print(current_price_data.text)
-
+        price_movement = [streamers[18].text, streamers[19].text, streamers[20].text,
+                          streamers[24].text, streamers[25].text, streamers[26].text]
         price_mov = {
             'current_price': (price_movement[0]),
             'dollar_move': (price_movement[1]),
@@ -72,8 +68,5 @@ class StockScraper:
         driver.quit()
 
         return stock_information
-
-
-
 
 # driver.quit()
