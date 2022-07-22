@@ -32,12 +32,11 @@ def insert_into_watchlist(ticker):
         cursor = connection.cursor()
         insert_statement = 'INSERT INTO investment_tool.watch_list(ticker) VALUES (%s);'
         args = ticker
-        cursor.execute(insert_statement,args)
+        cursor.execute(insert_statement, (args,))
         connection.commit()
     except (Exception, psycopg2.Error) as error:
         print("Error while fetching data from PostgreSQL", error)
     finally:
-        # closing database connection.
         if connection:
             cursor.close()
     return None
