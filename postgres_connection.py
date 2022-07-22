@@ -42,6 +42,18 @@ def insert_into_watchlist(ticker):
     return None
 
 
+def compare_watchlist(list_of_tickers):
+    first_set = set(list_of_tickers)
+    db_arr = []
+
+    for db_tickers in (select_query('select * from investment_tool.watch_list')):
+        db_arr.append(db_tickers[0])
+
+    for differences in first_set.difference(db_arr):
+        print(f'Adding {differences} to the database.')
+        insert_into_watchlist(differences)
+
+
 def delete_query(query):
     pass
 
