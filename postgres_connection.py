@@ -54,6 +54,22 @@ def compare_watchlist(list_of_tickers):
         insert_into_watchlist(differences)
 
 
+def insert_into_daily_data(ticker):
+    pass
+
+
+def insert_into_hourly_data(ticker):
+    pass
+
+
+def insert_into_minute_data(ticker):
+    pass
+
+
+def insert_into_30m_data(ticker):
+    pass
+
+
 def delete_query(query):
     pass
 
