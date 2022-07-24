@@ -3,8 +3,8 @@ import csv
 import os
 import stock
 
-def parse_daily_technicals(ticker):
 
+def parse_daily_technicals(ticker):
     analysis_stock = stock.Stock(ticker)
 
     technicals = analysis_stock.get_daily_technicals()

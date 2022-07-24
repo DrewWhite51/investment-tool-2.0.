@@ -1,22 +1,8 @@
 import yfinance
 import pandas
 
-def return_stock_information(ticker):
-    return yfinance.Ticker(str(ticker)).info['shortName']
-
-
-class Calculator:
-
-    def get_sma(self, close_arr, days):
-        pass
-
-
-
-
-
 
 class Stock:
-    pass
 
     def __init__(self, ticker):
         self.ticker = ticker

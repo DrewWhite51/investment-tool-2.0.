@@ -7,20 +7,14 @@ connection = psycopg2.connect(user="postgres",
                               database="postgres")
 
 
-def print_connection():
-    return connection
-
-
 def select_query(query):
     try:
         cursor = connection.cursor()
-        postgreSQL_select_Query = query
-        cursor.execute(postgreSQL_select_Query)
+        cursor.execute(query)
         mobile_records = cursor.fetchall()
     except (Exception, psycopg2.Error) as error:
         print("Error while fetching data from PostgreSQL", error)
     finally:
-        # closing database connection.
         if connection:
             cursor.close()
 
