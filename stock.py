@@ -1,5 +1,5 @@
 import yfinance
-
+import pandas
 
 def return_stock_information(ticker):
     return yfinance.Ticker(str(ticker)).info['shortName']
@@ -20,6 +20,9 @@ class Stock:
 
     def __init__(self, ticker):
         self.ticker = ticker
+
+    def get_ticker(self):
+        return self.ticker
 
     def return_stock_information(self):
         return yfinance.Ticker(self.ticker.info['shortName'])
@@ -44,14 +47,14 @@ class Stock:
             sma_list = []
             for sma_data in sma:
                 sma_list.append(sma_data)
-            return sma_list
+            return sma
 
         def get_ema(x):
             ema = close.ewm(span=x, adjust=False).mean()
             ema_list = []
             for ema_data in ema:
                 ema_list.append(ema_data)
-            return ema_list
+            return ema
 
         def get_upper_bollinger_band():
             closes = close
@@ -111,8 +114,6 @@ class Stock:
             macd_h = macd - macd_s
             return macd_h
 
-        print(get_sma(10))
-
         data = {
             'open': open,
             'high': high,
@@ -145,7 +146,7 @@ class Stock:
             'macdS': get_macd_s(),
             'macdH': get_macd_h()
         }
-        # return data
+        return pandas.DataFrame(data)
 
     def get_hourly_data(self):
         return yfinance.Ticker(self.ticker).history(period='1y', interval='1h')
@@ -168,5 +169,7 @@ class Stock:
             'cashflow': stock.get_cashflow(),
             'earnings': stock.get_earnings()
         }
-
         return data
+
+
+

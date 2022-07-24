@@ -1,16 +1,20 @@
-import yfinance
-from web_scraper import StockScraper
-import pprint
-import postgres_connection
 import stock
+from web_scrapers import yfinance_scraper
+import csv
+import time
+import os
+import parser
+
+
 watch_list = ['nvda', 'ibm', 'f', 'v', 'voo', 'spy']
 
 # postgres_connection.compare_watchlist(watch_list)
 
-ibm = stock.Stock('ibm').get_daily_technicals()
+# print(yfinance_scraper.StockScraper('ibm').scrape_yfinance())
 
-print(ibm)
 
-#
-# for data in get_data('ibm'):
-#     print(data)
+stock = stock.Stock('nvda')
+
+parser.parse_daily_technicals(stock.get_ticker())
+
+
