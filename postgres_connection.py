@@ -48,25 +48,29 @@ def compare_watchlist(list_of_tickers):
         insert_into_watchlist(differences)
 
 
-def insert_into_daily_data(ticker):
+def insert_into_daily_stock(ticker):
     pass
 
 
-def insert_into_hourly_data(ticker):
+def insert_into_hourly_stock(ticker):
     pass
 
 
-def insert_into_minute_data(ticker):
+def insert_into_minute_stock(ticker):
     pass
 
 
-def insert_into_30m_data(ticker):
+def insert_into_30m_stock(ticker):
     pass
 
 
-def delete_query(query):
+def insert_into_hourly_crypto(ticker):
     pass
 
 
-def update_query(query):
+def insert_into_daily_crypto(ticker):
+    pass
+
+
+def insert_into_minute_crypto(ticker):
     pass

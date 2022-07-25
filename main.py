@@ -1,20 +1,23 @@
+import cryptocompare
+
 import stock
 from web_scrapers import yfinance_scraper
 import csv
 import time
 import os
 import parser
-
-
+import crypto
+import pprint
+from datetime import datetime
 watch_list = ['nvda', 'ibm', 'f', 'v', 'voo', 'spy']
 
-# postgres_connection.compare_watchlist(watch_list)
+btc = crypto.Crypto('BTC')
 
-# print(yfinance_scraper.StockScraper('ibm').scrape_yfinance())
+# for data in btc.get_hourly_historical():
+#     # print(data)
+#     dt_object = datetime.fromtimestamp(data['time']).strftime("%m/%d/%Y, %H:%M:%S")
+#     print(dt_object, data['close'])
 
-
-stock = stock.Stock('nvda')
-
-parser.parse_daily_technicals(stock.get_ticker())
+# pprint.pprint(cryptocompare.get_exchanges())
 
 
