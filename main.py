@@ -9,8 +9,12 @@ import parser
 import crypto
 import pprint
 from datetime import datetime
+import grapher
+
+
 watch_list = ['nvda', 'ibm', 'f', 'v', 'voo', 'spy']
 
+ibm = stock.Stock('ibm')
 btc = crypto.Crypto('BTC')
 
 # for data in btc.get_hourly_historical():
@@ -20,4 +24,6 @@ btc = crypto.Crypto('BTC')
 
 # pprint.pprint(cryptocompare.get_exchanges())
 
+# print(ibm.get_daily_technicals()['open'])
 
+print(grapher.Grapher('ibm').graph_candlesticks())
