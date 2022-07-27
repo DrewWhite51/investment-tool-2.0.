@@ -1,5 +1,5 @@
 import cryptocompare
-
+from web_scrapers import coin_desk_scraper
 import stock
 from web_scrapers import yfinance_scraper
 import csv
@@ -26,4 +26,8 @@ btc = crypto.Crypto('BTC')
 
 # print(ibm.get_daily_technicals()['open'])
 
-print(grapher.Grapher('ibm').graph_candlesticks())
+# print(grapher.Grapher('ibm').graph_candlesticks())
+
+cd = coin_desk_scraper.CoinDeskScraper().home_page_scraper()
+
+print(cd)
